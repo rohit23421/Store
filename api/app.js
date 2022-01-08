@@ -14,6 +14,7 @@ const categoryRoutes = require("./routes/category");
 const productRoutes = require("./routes/product");
 const orderRoutes = require("./routes/order");
 const stripeRoutes = require("./routes/stripePayment");
+const paymentBRoutes = require("./routes/paymentBRoutes");
 
 mongoose
   .connect(process.env.DB_URL, {
@@ -38,6 +39,7 @@ app.use("/api", categoryRoutes);
 app.use("/api", productRoutes);
 app.use("/api", orderRoutes);
 app.use("/api", stripeRoutes);
+app.use("/api", paymentBRoutes);
 
 app.listen(process.env.PORT || 5000, () => {
   console.log("SERVER UP AND RUNNING ON PORT 5000...");

@@ -3,6 +3,7 @@ import "../styles.css";
 import Base from "./Base";
 import Card from "./Card";
 import { loadCart } from "./helper/CartHelper";
+import PaymentB from "./PaymentB";
 import StripeCheckout from "./StripeCheckout";
 
 const Cart = () => {
@@ -15,7 +16,7 @@ const Cart = () => {
     setProducts(loadCart());
   }, [reload]);
 
-  const loadAllProducts = () => {
+  const loadAllProducts = (products) => {
     return (
       <div className="">
         <h2 className="">This section is to Load products</h2>
@@ -44,9 +45,17 @@ const Cart = () => {
   return (
     <Base title="Cart Page" description="Welcome to the Cart page">
       <div className="row text-center">
-        <div className="col-6">{loadAllProducts()}</div>
+        <div className="col-6">
+          {products.length > 0 ? (
+            loadAllProducts(products)
+          ) : (
+            <h3>Cart is Empty!</h3>
+          )}
+        </div>
         <div className="col-6">
           <StripeCheckout products={products} setReload={setReload} />
+          <br />
+          <PaymentB products={products} setReload={setReload} />
         </div>
       </div>
     </Base>

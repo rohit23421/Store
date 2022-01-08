@@ -72,7 +72,7 @@ const StripeCheckout = ({
 
   return (
     <div>
-      <h3 className="text-white">Stripe checkout {getFinalAmount()}</h3>
+      <h3 className="text-white">Pay with Stripe: {getFinalAmount()}</h3>
       {showStripeButton()}
     </div>
   );
